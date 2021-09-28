@@ -7,6 +7,8 @@
   <button :style="bwarn">warn</button>
   <button :style="bprimary">primary</button>
 
+  <button :style="bprimary" @click="handleClick">handleClick</button>
+
 </div>
 </template>
 
@@ -16,6 +18,9 @@ export default {
   props:{
     colorPalette:{
       type:Object,
+    },
+    handleClick:{
+      type:Function,
     }
   },
   data(){

@@ -11,7 +11,8 @@
     <BaseLayout>
       <HomePage/>
       <BaseButton :colorPalette="colorPalette"/>
-      <AsyncButton/>
+
+      <AsyncButton :color="colorPalette.primary">x</AsyncButton>
     </BaseLayout>
 
   </div>

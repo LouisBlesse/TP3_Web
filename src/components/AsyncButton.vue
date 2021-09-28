@@ -4,11 +4,11 @@
       :color="color"
       @click.stop.prevent="handleClick"
   >
-   <!-- <font-awesome-icon
+   <font-awesome-icon
         v-if="isPending"
         :icon="['fas', 'circle-notch']"
         pulse
-    />-->
+    />
     <slot />
   </BaseButton>
 </template>
