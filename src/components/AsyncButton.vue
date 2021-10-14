@@ -1,45 +1,39 @@
 <template>
   <BaseButton
-      :disabled="isPending"
-      :color="color"
-      @click.stop.prevent="handleClick"
+    :disabled="isPending"
+    :color="color"
+    @click.stop.prevent="handleClick"
   >
-   <font-awesome-icon
-        v-if="isPending"
-        :icon="['fas', 'circle-notch']"
-        pulse
-    />
     <slot />
   </BaseButton>
 </template>
 
 <script>
-import BaseButton from './BaseButton.vue'
+import BaseButton from "./BaseButton.vue";
 
 export default {
-  name: 'AsyncButton',
+  name: "AsyncButton",
   components: { BaseButton },
   inheritAttrs: false,
-
   props: {
     color: {
       type: String,
-      default: 'primary'
-    }
+      default: "primary",
+    },
   },
-
-  data () {
+  data() {
     return {
-      isPending: false
-    }
+      isPending: false,
+    };
   },
-
   methods: {
-    handleClick () {
-      const originalOnClick = /** @type {() => Promise<void>} */ (this.$attrs.onClick)
-      this.isPending = true
-      originalOnClick().finally(() => { this.isPending = false })
-    }
-  }
-}
+    handleClick() {
+      const originalOnClick = this.$attrs.onClick;
+      this.isPending = true;
+      originalOnClick().finally(() => {
+        this.isPending = false;
+      });
+    },
+  },
+};
 </script>

@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-
     <header>
-      <img alt="Vue logo" src="./assets/logo.png">
-
+      <img alt="Vue logo" src="./assets/logo.png" />
       <p>User</p>
       <p>Login</p>
       <p>connexion</p>
     </header>
+    <HomePage />
+
     <BaseLayout>
-      <HomePage/>
-      <BaseButton :colorPalette="colorPalette"/>
-
-      <AsyncButton :color="colorPalette.primary">x</AsyncButton>
+      <BaseButton color="primary">primary</BaseButton>
+      <br />
+      <BaseButton color="danger">danger</BaseButton>
+      <br />
+      <BaseButton color="warn">warn</BaseButton>
+      <br />
+      <BaseButton color="danger" disabled>danger disabled</BaseButton>
     </BaseLayout>
-
   </div>
 </template>
 
@@ -22,44 +24,29 @@
 import HomePage from "@/components/HomePage";
 import BaseLayout from "@/components/BaseLayout";
 import BaseButton from "@/components/BaseButton";
-import AsyncButton from "@/components/AsyncButton";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     HomePage,
     BaseLayout,
     BaseButton,
-    AsyncButton
   },
-  data(){
-    return{
-      colorPalette : {
-        primary: {bg: '#42b983', hoverBg: '#4cce93', focusBorder: '#47d696'},
-        warn: {bg: '#ff5722', hoverBg: '#ff7043', focusBorder: '#ff8a65'},
-        danger: {bg: '#e53935', hoverBg: '#ef5350', focusBorder: '#e57373'},
-      },
-    }
-  },
-  methods : function (){
-
-  }
-}
+};
 </script>
 
 <style>
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
-header{
+header {
   display: flex;
   justify-content: space-evenly;
   color: midnightblue;
-  background: #3CB371;
+  background: #3cb371;
   max-height: 250px;
 }
 </style>

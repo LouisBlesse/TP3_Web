@@ -1,59 +1,69 @@
 <template>
-<div>
-  <button id="actif">actif</button>
-  <button :disabled="inactive" id="inactif">inactif</button>
-
-  <button :style="bdanger">danger</button>
-  <button :style="bwarn">warn</button>
-  <button :style="bprimary">primary</button>
-
-  <button :style="bprimary" @click="handleClick">handleClick</button>
-
-</div>
+  <button :style="cssPros">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
 export default {
   name: "BaseButton",
-  props:{
-    colorPalette:{
-      type:Object,
+  props: {
+    color: {
+      type: String,
+      default: "primary",
     },
-    handleClick:{
-      type:Function,
-    }
   },
-  data(){
-    return{
-      inactive:true
-    }
+  data() {
+    return {
+      inactive: true,
+      colorPalette: {
+        primary: {
+          "--bg": "#42b983",
+          "--hoverBg": "#4cce93",
+          "--focusBorder": "#47d696",
+        },
+        warn: {
+          "--bg": "#ff5722",
+          "--hoverBg": "#ff7043",
+          "--focusBorder": "#ff8a65",
+        },
+        danger: {
+          "--bg": "#e53935",
+          "--hoverBg": "#ef5350",
+          "--focusBorder": "#e57373",
+        },
+      },
+    };
   },
-  computed:{
-    bdanger() {
-      return 'background-color:'+this.colorPalette.danger.bg;
+  computed: {
+    cssPros() {
+      return this.colorPalette[this.color];
     },
-    bwarn() {
-      return 'background-color:'+this.colorPalette.warn.bg;
-    },
-    bprimary() {
-      return 'background-color:'+this.colorPalette.primary.bg;
-    }
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
-#actif:hover{
+button {
+  width: 200px;
+  height: 30px;
+
+  border-radius: 25px;
+  background-color: var(--bg);
+  border: 0px;
+  margin: 5px;
+}
+
+button:disabled {
   opacity: 0.33;
 }
 
-button{
-  width: 200px;
-  height: 30px;
-  margin-left: 15px;
-  border-radius: 25px;
-  background-color: #3CB371;
-  color: midnightblue;
+button:not(:disabled):hover {
+  background-color: var(--hoverBg);
 }
 
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.125em var(--focusBorder);
+}
 </style>

@@ -1,14 +1,14 @@
 <template>
-<div><slot></slot>
-<p>Coucou</p></div>
+  <div>
+    <slot></slot>
+    <p>Coucou</p>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "BaseLayout"
-}
+  name: "BaseLayout",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
